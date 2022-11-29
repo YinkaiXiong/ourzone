@@ -57,7 +57,7 @@ const Admin = () =>{
 					</tr>
 				</thead>
 				<tbody>
-					{dishes.map((dish)=>(
+					{dishes && dishes.map((dish)=>(
 						<tr key={dish.id}>
 							<td>{dish.id}</td>
 							<td>{dish.title}</td>

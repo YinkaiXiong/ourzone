@@ -38,7 +38,7 @@ const Menu = () =>{
 				<Bag className={"bag-icon"}/>
 			</div>
 			<div className={"cards-container"}>
-				{dishes.map((dish)=>(
+				{dishes && dishes.map((dish)=>(
 					<Card
 						key={dish.id}
 						dishID={dish.id}
@@ -48,8 +48,6 @@ const Menu = () =>{
 						dishImg={dish.image}
 					/>
 				))}
-				{/*<Card />*/}
-				{/*<Card />*/}
 
 			</div>
 		</div>
