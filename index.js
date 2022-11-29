@@ -1,0 +1,96 @@
+const express = require("express");
+const mysql = require("mysql2");
+const cors = require("cors");
+const path = require("path");
+require("dotenv").config();
+
+const app = express();
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: process.env.DB_PASSWORD,
+  database: "ourzone",
+});
+
+app.use(express.json());
+app.use(cors());
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("./fontend/build"));
+}
+
+app.get("/", (req, res) => {
+  res.json("this is back end");
+});
+
+app.get("/dishes", (req, res) => {
+  const q = "SELECT * FROM ourzone.dishes";
+  db.query(q, (err, data) => {
+    if (err) {
+      return res.json(err);
+    }
+    return res.json(data);
+  });
+});
+
+app.post("/addDish", (req, res) => {
+  const q =
+    "INSERT INTO ourzone.dishes (`title`,`description`,`price`,`image`) VALUES (?)";
+  const values = [
+    req.body.title,
+    req.body.desc,
+    req.body.price,
+    req.body.image,
+  ];
+
+  db.query(q, [values], (err, data) => {
+    if (err) {
+      return res.json(err);
+    }
+    return res.json("Dish added successful.");
+  });
+});
+
+app.delete("/dish/:id", (req, res) => {
+  const dishID = req.params.id;
+  const q = "DELETE FROM ourzone.dishes WHERE id = ?";
+
+  db.query(q, [dishID], (err, data) => {
+    if (err) {
+      return res.json(err);
+    }
+    return res.json("Dish delete successful.");
+  });
+});
+
+app.post("/dish/:id", (req, res) => {
+  const dishID = req.params.id;
+  const q =
+    "UPDATE ourzone.dishes SET `title`=?, `description`=?, `price`=?, `image`=? WHERE id = ?";
+
+  const values = [
+    req.body.title,
+    req.body.desc,
+    req.body.price,
+    req.body.image,
+    // "Updated title",
+    // "Updated description",
+    // 15.99,
+    // "UpdatedIMG.jpg"
+  ];
+
+  db.query(q, [...values, dishID], (err, data) => {
+    if (err) {
+      return res.json(err);
+    }
+    return res.json("Dish updated successful.");
+  });
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./fontend/build", "index.html"));
+});
+
+app.listen(8800, () => {
+  console.log("Connected to backend!");
+});

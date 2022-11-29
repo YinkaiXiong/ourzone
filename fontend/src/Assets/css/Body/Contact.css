@@ -1,0 +1,157 @@
+.contact-container{
+  min-height: 100vh;
+  border: 1px solid black;
+  padding-top: 10vh;
+  background-color: #EAEAEA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactInfo-container{
+  margin: 1em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.emailForm-container{
+  margin: 1em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-boxes{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-boxes input{
+  border-radius: 15px;
+  border: none;
+  text-indent: 5px;
+}
+
+.input-boxes textarea{
+  border-radius: 15px;
+  border: none;
+  text-indent: 5px;
+}
+
+#formSubmitBtn{
+  margin: 1em;
+  height: 3em;
+  width: 6em;
+  border-radius: 15px;
+  border: none;
+  background-color: rgb(34, 33, 32);
+  color: rgb(208, 207, 205);
+  font-weight: bold;
+  font-size: medium;
+
+}
+
+#formSubmitBtn:hover{
+  cursor: pointer;
+  background-color: rgb(55, 55, 55);
+}
+
+@media (min-width: 300px) and (max-width: 749px){
+  .contact-container{
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  h1{
+    margin: 1em 0 0.5em 0;
+  }
+
+  .contactInfo-container{
+    width: 80%;
+  }
+
+  .emailForm-container{
+    width: 80%;
+  }
+
+
+  .input-boxes input{
+    height: 3em;
+    width: 20em;
+    margin: 1em;
+  }
+
+  .input-boxes textarea{
+    height: 6em;
+    margin: 1em;
+    width: 20em;
+  }
+
+  .contactInfo-container p{
+    padding: 3px;
+
+  }
+
+  .contactInfo-container p span{
+    font-weight: bold;
+  }
+
+}
+
+@media (min-width: 750px) and (max-width: 2000px){
+  .contact-container{
+    height: 100vh;
+    border: 1px solid black;
+    padding-top: 15vh;
+    background-color: #EAEAEA;
+  }
+
+  .contactInfo-container h1{
+    display: none;
+  }
+
+  .contactInfo-container{
+    width: 30%;
+    align-items: flex-start;
+  }
+
+  .emailForm-container{
+    width: 40%;
+    border-radius: 15px;
+    border: darkgray 1px solid;
+  }
+
+  .input-boxes input{
+    height: 3em;
+    width: 25em;
+    margin: 1.2em;
+
+  }
+
+  .input-boxes textarea{
+    height: 8em;
+    margin: 1em;
+    width: 25em;
+  }
+
+  .contactInfo-container h3{
+    padding: 6px 0;
+  }
+
+  .contactInfo-container p{
+    padding: 6px 0;
+    font-size: large;
+  }
+
+  .contactInfo-container p span{
+    font-weight: bold;
+  }
+
+}
