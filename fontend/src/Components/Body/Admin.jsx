@@ -6,7 +6,7 @@ import {axiosConnect} from "../../axios";
 
 const Admin = () =>{
 
-	const [dishes, setDishes] = useState([]);
+	const [dishes, setDishes] = useState(null);
 	const navigate = useNavigate();
 
 

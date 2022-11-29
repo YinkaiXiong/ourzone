@@ -6,7 +6,7 @@ import axios from "axios";
 import {axiosConnect} from "../../axios";
 
 const Menu = () =>{
-	const [dishes, setDishes] = useState([]);
+	const [dishes, setDishes] = useState(null);
 
 	useEffect(() => {
 		let isCancelled = false;
