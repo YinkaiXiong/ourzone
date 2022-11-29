@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/dishes", (req, res) => {
-  const q = "SELECT * FROM ourzone.dishes";
+  const q = "SELECT * FROM dishes";
   db.query(q, (err, data) => {
     if (err) {
       return res.json(err);
@@ -36,7 +36,7 @@ app.get("/dishes", (req, res) => {
 
 app.post("/addDish", (req, res) => {
   const q =
-    "INSERT INTO ourzone.dishes (`title`,`description`,`price`,`image`) VALUES (?)";
+    "INSERT INTO dishes (`title`,`description`,`price`,`image`) VALUES (?)";
   const values = [
     req.body.title,
     req.body.desc,
@@ -54,7 +54,7 @@ app.post("/addDish", (req, res) => {
 
 app.delete("/dish/:id", (req, res) => {
   const dishID = req.params.id;
-  const q = "DELETE FROM ourzone.dishes WHERE id = ?";
+  const q = "DELETE FROM dishes WHERE id = ?";
 
   db.query(q, [dishID], (err, data) => {
     if (err) {
@@ -67,7 +67,7 @@ app.delete("/dish/:id", (req, res) => {
 app.post("/dish/:id", (req, res) => {
   const dishID = req.params.id;
   const q =
-    "UPDATE ourzone.dishes SET `title`=?, `description`=?, `price`=?, `image`=? WHERE id = ?";
+    "UPDATE dishes SET `title`=?, `description`=?, `price`=?, `image`=? WHERE id = ?";
 
   const values = [
     req.body.title,
